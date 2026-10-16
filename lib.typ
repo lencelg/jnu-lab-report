@@ -32,7 +32,7 @@
 #let jnu-label(s) = table.cell(
   inset: 0pt,
   align: left + horizon,
-)[#box[#s]]
+)[#box[#text(weight: "bold")[#s]]]
 
 #let jnu-val(s, align-val: center, rule: true) = table.cell(
   inset: (bottom: 3pt),
@@ -92,7 +92,7 @@
   title-size: 22pt,          // 封面标题：二号
   title-weight: "bold",
   field-size: 13pt,          // 封面字段：四号
-  label-weight: "regular",   // 标签字重（源文档为常规）
+  label-weight: "bold",      // 标签字重（加粗）
   value-align: center,       // 填空值对齐：center / left / right
   blank-rule: true,          // 是否给填空画下划线
   cover-top: 14pt,           // 封面标题距页顶（在页边距之外再加的留白）
