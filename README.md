@@ -1,3 +1,5 @@
+[English](./README.md) | [简体中文](./README-zh.md) |
+
 # JiNan University lab typst template
 
 ## Quick Start
@@ -25,36 +27,36 @@ typst compile main.typ
 
 ## Parameters
 
-| Parameter| meaning|
+| Parameter | Meaning |
 | --- | --- |
-| `course` | 课程名称 |
-| `grade` | 成绩评定 |
-| `lab-name` | 实验项目名称 |
-| `instructor` | 指导教师 |
-| `lab-id` | 实验项目编号 |
-| `lab-type` | 实验项目类型 |
-| `site` | 实验地点 |
-| `author` | 学生姓名 |
-| `student-id` | 学号 |
-| `college` | 学院 |
-| `department` | 系 |
-| `major` | 专业 |
+| `course` | Course name |
+| `grade` | Grade |
+| `lab-name` | Experiment name |
+| `instructor` | Instructor |
+| `lab-id` | Experiment number |
+| `lab-type` | Experiment type |
+| `site` | Location |
+| `author` | Student name |
+| `student-id` | Student ID |
+| `college` | College |
+| `department` | Department |
+| `major` | Major |
 
-表单结构为 `__年__月__日__午 ～ __月__日__午 温度__℃ 湿度__`。
+The experiment-time row is structured as `__年__月__日__午 ～ __月__日__午 温度__℃ 湿度__`.
 
-| 参数 | 含义 |
+| Parameter | Meaning |
 | --- | --- |
-| `year` / `month` / `day` / `ampm` | 起始 年 / 月 / 日 / 午（上午填「上」、下午填「下」） |
-| `end-month` / `end-day` / `end-ampm` | 结束 月 / 日 / 午 |
-| `temperature` | 温度（单位 ℃ 已印在表单上） |
-| `humidity` | 湿度 |
+| `year` / `month` / `day` / `ampm` | Start year / month / day / half-day (use `上` for morning, `下` for afternoon) |
+| `end-month` / `end-day` / `end-ampm` | End month / day / half-day |
+| `temperature` | Temperature (the `℃` unit is pre-printed on the form) |
+| `humidity` | Humidity |
 
 ## Additional Configuration
 
-| 参数 | 默认值 | 含义 |
+| Parameter | Default | Meaning |
 | --- | --- | --- |
-| `title` | `"暨南大学本科实验报告专用纸"` | 封面标题 |
-| `appendix-title` | `"暨南大学本科实验报告专用纸"` | 附页报头主标题 |
-| `appendix-suffix` | `"(附页)"` | 报头后缀 |
-| `show-appendix-header` | `true` | 是否显示附页报头 |
-| `show-header-rule` | `true` | 报头标题下是否画横线 |
+| `title` | `"暨南大学本科实验报告专用纸"` | Cover title |
+| `appendix-title` | `"暨南大学本科实验报告专用纸"` | Appendix letterhead main title |
+| `appendix-suffix` | `"(附页)"` | Letterhead suffix |
+| `show-appendix-header` | `true` | Show the appendix letterhead |
+| `show-header-rule` | `true` | Draw the rule under the letterhead title |
