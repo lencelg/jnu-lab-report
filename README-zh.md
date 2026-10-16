@@ -1,3 +1,5 @@
+[English](./README.md) | **简体中文** |
+
 # 暨南大学实验报告 Typst 模板
 
 ## 快速开始
@@ -44,12 +46,12 @@ typst compile main.typ
 
 | 参数 | 含义 |
 | --- | --- |
-| `year` / `month` / `day` / `ampm` | 起始 年 / 月 / 日 / 午（上午填「上」、下午填「下」） |
+| `year` / `month` / `day` / `ampm` | 起始 年 / 月 / 日 / 午 |
 | `end-month` / `end-day` / `end-ampm` | 结束 月 / 日 / 午 |
-| `temperature` | 温度（单位 ℃ 已印在表单上） |
+| `temperature` | 温度（单位 ℃） |
 | `humidity` | 湿度 |
 
-## 补充配置
+## 额外配置
 
 | 参数 | 默认值 | 含义 |
 | --- | --- | --- |
