@@ -91,11 +91,11 @@
 
   title-size: 22pt,          // 封面标题：二号
   title-weight: "bold",
-  field-size: 13pt,          // 封面字段：四号
+  field-size: 12pt,          // 封面字段：四号
   label-weight: "bold",      // 标签字重（加粗）
   value-align: center,       // 填空值对齐：center / left / right
   blank-rule: true,          // 是否给填空画下划线
-  cover-top: 14pt,           // 封面标题距页顶（在页边距之外再加的留白）
+  cover-top: -38pt,           // 封面标题距页顶（在页边距之外再加的留白）
   cover-gap: 16.5pt,         // 标题与字段区之间的间距
   cover-leading: 0em,        // 封面字段行距（配合 row-pitch 控制）
   row-pitch: 21pt,           // 字段行距（相邻下划线之间的距离，源文档为 21pt）
@@ -104,7 +104,8 @@
   appendix-suffix-size: 16pt,// “(附页)”字号：三号
   header-title-dy: 30pt,   // 附页标题（22pt）距页面顶边的放置偏移
   header-rule-y: 52pt,      // 附页标题下横线距页面顶边的位置
-  body-margin-top: 70pt,    // 正文页上边距（需容纳附页“报头”）
+  body-new-page: false,      // 正文是否另起一页（false = 接在封面之后的同一页）
+  cover-body-gap: 1em,       // 正文接在封面后时，与封面之间的间距
 
   body-size: 10.5pt,         // 正文：五号
   h1-size: 12pt,             // 一级标题：小四
@@ -118,12 +119,28 @@
   body,
 ) = {
   set document(title: title, author: author)
-  set text(font: jnu-font-song, size: field-size, lang: "zh", region: "cn")
 
+  // 附页报头：第 1 页（封面）不显示，第 2 页起每页重复。
+  // 用页码判断实现（而不是中途 set page），因为中途修改页面属性会强制分页。
+  let appendix-header = context {
+    if show-appendix-header and counter(page).get().first() >= 2 {
+      align(top)[
+        #place(top + center, dy: header-title-dy, block(width: 100%)[
+          #text(font: jnu-font-song, size: appendix-size, weight: "bold")[#appendix-title]#text(font: jnu-font-song, size: appendix-suffix-size)[#appendix-suffix]
+        ])
+        #if show-header-rule {
+          place(top, dy: header-rule-y, line(length: 100%, stroke: jnu-rule))
+        }
+      ]
+    }
+  }
+
+  set text(font: jnu-font-song, size: field-size, lang: "zh", region: "cn")
   set page(
     paper: paper,
     margin: (top: margin-top, bottom: margin-bottom, left: margin-x, right: margin-x),
     numbering: none,
+    header: appendix-header,
   )
 
   set par(leading: cover-leading)
@@ -173,21 +190,8 @@
     align(bottom + left, par(justify: false)[#text(weight: label-weight)[实验时间]#jnu-slot(year, unit: "年", w: 28pt, rule: blank-rule, align-val: value-align)#jnu-slot(month, unit: "月", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(day, unit: "日", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)#jnu-slot(ampm, unit: "午～", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(end-month, unit: "月", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(end-day, unit: "日", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)#jnu-slot(end-ampm, unit: "午", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)温度#jnu-slot(temperature, w: 14pt, rule: blank-rule, align-val: value-align)℃湿度#jnu-slot(humidity, w: 30pt, rule: blank-rule, align-val: value-align)]),
   )
 
-  //  第 2 页
-  pagebreak()
-
-  let appendix-header = align(top)[
-    #place(top + center, dy: header-title-dy, block(width: 100%)[
-      #text(font: jnu-font-song, size: appendix-size, weight: "bold")[#appendix-title]#text(font: jnu-font-song, size: appendix-suffix-size)[#appendix-suffix]
-    ])
-    #if show-header-rule {
-      place(top, dy: header-rule-y, line(length: 100%, stroke: jnu-rule))
-    }
-  ]
-  set page(
-    margin: (top: body-margin-top, bottom: margin-bottom, left: margin-x, right: margin-x),
-    header: if show-appendix-header { appendix-header } else { none },
-  )
+  //  正文：默认接在封面后面（同一页）；body-new-page 为真时另起一页。
+  if body-new-page { pagebreak() } else { v(cover-body-gap) }
 
   if not show-appendix-header {
     // 无页眉时，在正文开头排一次附页标题
