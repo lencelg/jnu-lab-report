@@ -100,15 +100,15 @@
   cover-leading: 0em,        // 封面字段行距（配合 row-pitch 控制）
   row-pitch: 21pt,           // 字段行距（相邻下划线之间的距离，源文档为 21pt）
 
-  appendix-size: 18pt,       // 附页标题字号（与封面一致）
-  appendix-suffix-size: 16pt,// “(附页)”字号：三号
-  header-title-dy: 30pt,   // 附页标题（22pt）距页面顶边的放置偏移
-  header-rule-y: 52pt,      // 附页标题下横线距页面顶边的位置
-  body-new-page: false,      // 正文是否另起一页（false = 接在封面之后的同一页）
-  cover-body-gap: 1em,       // 正文接在封面后时，与封面之间的间距
+  appendix-size: 18pt,        // 附页标题字号（与封面一致）
+  appendix-suffix-size: 16pt, // “(附页)”字号：三号
+  header-title-dy: 30pt,      // 附页标题（22pt）距页面顶边的放置偏移
+  header-rule-y: 52pt,        // 附页标题下横线距页面顶边的位置
+  body-new-page: false,       // 正文是否另起一页（false = 接在封面之后的同一页）
+  cover-body-gap: 1em,        // 正文接在封面后时，与封面之间的间距
 
-  body-size: 10.5pt,         // 正文：五号
-  h1-size: 12pt,             // 一级标题：小四
+  body-size: 10.5pt,          // 正文：五号
+  h1-size: 12pt,              // 一级标题：小四
   h2-size: 10.5pt,
   h3-size: 10.5pt,
   leading: 1.5em,
@@ -121,7 +121,6 @@
   set document(title: title, author: author)
 
   // 附页报头：第 1 页（封面）不显示，第 2 页起每页重复。
-  // 用页码判断实现（而不是中途 set page），因为中途修改页面属性会强制分页。
   let appendix-header = context {
     if show-appendix-header and counter(page).get().first() >= 2 {
       align(top)[
@@ -152,49 +151,47 @@
 
   let field(columns, ..cells) = jnu-field-row(columns, pitch: row-pitch, ..cells)
 
-  // ① 课程名称 · 成绩评定
+  // 课程名称 · 成绩评定
   field((auto, 224fr, auto, 79.65fr),
     jnu-label("课程名称"), jnu-val(course, align-val: value-align, rule: blank-rule),
     jnu-label("成绩评定"), jnu-val(grade, align-val: value-align, rule: blank-rule),
   )
 
-  // ② 实验项目名称 · 指导教师
+  // 实验项目名称 · 指导教师
   field((auto, 182fr, auto, 93.65fr),
     jnu-label("实验项目名称"), jnu-val(lab-name, align-val: value-align, rule: blank-rule),
     jnu-label("指导教师"), jnu-val(instructor, align-val: value-align, rule: blank-rule),
   )
 
-  // ③ 实验项目编号 · 实验项目类型 · 实验地点
+  // 实验项目编号 · 实验项目类型 · 实验地点
   field((auto, 91fr, auto, 28fr, auto, 72.65fr),
     jnu-label("实验项目编号"), jnu-val(lab-id, align-val: value-align, rule: blank-rule),
     jnu-label("实验项目类型"), jnu-val(lab-type, align-val: value-align, rule: blank-rule),
     jnu-label("实验地点"), jnu-val(site, align-val: value-align, rule: blank-rule),
   )
 
-  // ④ 学生姓名 · 学号
+  // 学生姓名 · 学号
   field((auto, 119fr, auto, 212.65fr),
     jnu-label("学生姓名"), jnu-val(author, align-val: value-align, rule: blank-rule),
     jnu-label("学号"), jnu-val(student-id, align-val: value-align, rule: blank-rule),
   )
 
-  // ⑤ 学院 · 系 · 专业
+  // 学院 · 系 · 专业
   field((auto, 140fr, auto, 70fr, auto, 135.65fr),
     jnu-label("学院"), jnu-val(college, align-val: value-align, rule: blank-rule),
     jnu-label("系"), jnu-val(department, align-val: value-align, rule: blank-rule),
     jnu-label("专业"), jnu-val(major, align-val: value-align, rule: blank-rule),
   )
 
-  // ⑥ 实验时间：__年__月__日__午 ～ __月__日__午  温度__℃ 湿度__
+  // 实验时间：__年__月__日__午 ～ __月__日__午  温度__℃ 湿度__
   block(
     width: 100%, height: row-pitch, above: 0pt, below: 0pt, inset: (bottom: 2pt),
-    align(bottom + left, par(justify: false)[#text(weight: label-weight)[实验时间]#jnu-slot(year, unit: "年", w: 28pt, rule: blank-rule, align-val: value-align)#jnu-slot(month, unit: "月", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(day, unit: "日", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)#jnu-slot(ampm, unit: "午～", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(end-month, unit: "月", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(end-day, unit: "日", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)#jnu-slot(end-ampm, unit: "午", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)温度#jnu-slot(temperature, w: 14pt, rule: blank-rule, align-val: value-align)℃湿度#jnu-slot(humidity, w: 30pt, rule: blank-rule, align-val: value-align)]),
+    align(bottom + left, par(justify: false)[#text(weight: label-weight)[实验时间]#jnu-slot(year, unit: "年", w: 28pt, rule: blank-rule, align-val: value-align)#jnu-slot(month, unit: "月", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(day, unit: "日", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)#jnu-slot(ampm, unit: "午～", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(end-month, unit: "月", w: 14pt, rule: blank-rule, align-val: value-align)#jnu-slot(end-day, unit: "日", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)#jnu-slot(end-ampm, unit: "午", w: 14pt, rule: blank-rule, align-val: value-align)#h(6pt)温度 #jnu-slot(temperature, w: 14pt, rule: blank-rule, align-val: value-align)℃ 湿度#jnu-slot(humidity, w: 30pt, rule: blank-rule, align-val: value-align)]),
   )
 
-  //  正文：默认接在封面后面（同一页）；body-new-page 为真时另起一页。
   if body-new-page { pagebreak() } else { v(cover-body-gap) }
 
   if not show-appendix-header {
-    // 无页眉时，在正文开头排一次附页标题
     align(center)[
       #text(font: jnu-font-song, size: appendix-size, weight: "bold")[#appendix-title]#text(font: jnu-font-song, size: appendix-suffix-size)[#appendix-suffix]
     ]
