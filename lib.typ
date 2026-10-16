@@ -1,9 +1,5 @@
-// 西文（Times 系）：Windows / macOS 用 Times New Roman，Linux 回退 Liberation / DejaVu
 #let jnu-font-latin = ("Times New Roman", "Times", "Liberation Serif", "DejaVu Serif")
 
-// 宋体（正文/封面，文档实际使用的字体）
-// 顺序 = 跨平台首选 → Windows → macOS → Linux；Typst 逐字形回退，各平台各取所需。
-// 若想在 Linux 上一律用思源黑体，把 "LXGW WenKai" 移到本列表最前面即可。
 #let jnu-font-song = jnu-font-latin + (
   "Noto Serif CJK SC", "Source Han Serif SC", "思源宋体 SC",
   "SimSun", "宋体", "NSimSun",
@@ -11,14 +7,12 @@
   "LXGW WenKai", "Noto Serif CJK TC",
 )
 
-// 楷体：跨平台 LXGW WenKai → Windows KaiTi → macOS Kaiti SC
 #let jnu-font-kai = jnu-font-latin + (
   "LXGW WenKai",
   "KaiTi", "楷体", "KaiTi_GB2312", "楷体_GB2312",
   "Kaiti SC", "STKaiti",
 )
 
-// 黑体：跨平台思源黑体 → Windows SimHei/雅黑 → macOS PingFang → Linux Noto Sans CJK
 #let jnu-font-hei = jnu-font-latin + (
   "Noto Sans CJK SC", "Source Han Sans CN", "思源黑体 CN",
   "SimHei", "黑体", "Microsoft YaHei", "微软雅黑",
