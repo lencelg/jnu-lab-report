@@ -1,14 +1,29 @@
-#let jnu-font-song = (
-  "Times New Roman", "Liberation Serif",
-  "Noto Serif CJK SC", "Source Han Serif SC", "Noto Sans CJK SC",
+// 西文（Times 系）：Windows / macOS 用 Times New Roman，Linux 回退 Liberation / DejaVu
+#let jnu-font-latin = ("Times New Roman", "Times", "Liberation Serif", "DejaVu Serif")
+
+// 宋体（正文/封面，文档实际使用的字体）
+// 顺序 = 跨平台首选 → Windows → macOS → Linux；Typst 逐字形回退，各平台各取所需。
+// 若想在 Linux 上一律用思源黑体，把 "LXGW WenKai" 移到本列表最前面即可。
+#let jnu-font-song = jnu-font-latin + (
+  "Noto Serif CJK SC", "Source Han Serif SC", "思源宋体 SC",
+  "SimSun", "宋体", "NSimSun",
+  "Songti SC", "STSong",
+  "LXGW WenKai", "Noto Serif CJK TC",
 )
-#let jnu-font-kai = (
-  "Times New Roman", "Liberation Serif",
-  "LXGW WenKai", "KaiTi", "楷体", "Noto Serif CJK SC",
+
+// 楷体：跨平台 LXGW WenKai → Windows KaiTi → macOS Kaiti SC
+#let jnu-font-kai = jnu-font-latin + (
+  "LXGW WenKai",
+  "KaiTi", "楷体", "KaiTi_GB2312", "楷体_GB2312",
+  "Kaiti SC", "STKaiti",
 )
-#let jnu-font-hei = (
-  "Times New Roman", "Liberation Sans",
-  "Noto Sans CJK SC", "Source Han Sans CN",
+
+// 黑体：跨平台思源黑体 → Windows SimHei/雅黑 → macOS PingFang → Linux Noto Sans CJK
+#let jnu-font-hei = jnu-font-latin + (
+  "Noto Sans CJK SC", "Source Han Sans CN", "思源黑体 CN",
+  "SimHei", "黑体", "Microsoft YaHei", "微软雅黑",
+  "PingFang SC", "Heiti SC",
+  "WenQuanYi Micro Hei",
 )
 
 #let jnu-rule = 0.68pt + black
@@ -145,7 +160,7 @@
   set par(leading: cover-leading)
   v(cover-top)
   align(center)[
-    #text(font: jnu-font-song, size: title-size, weight: title-weight)[#title]
+    #text(size: title-size, weight: title-weight)[#title]
   ]
   v(cover-gap)
 
@@ -193,7 +208,7 @@
 
   if not show-appendix-header {
     align(center)[
-      #text(font: jnu-font-song, size: appendix-size, weight: "bold")[#appendix-title]#text(font: jnu-font-song, size: appendix-suffix-size)[#appendix-suffix]
+      #text(size: appendix-size, weight: "bold")[#appendix-title]#text(size: appendix-suffix-size)[#appendix-suffix]
     ]
     v(1.0em)
   }
@@ -218,7 +233,7 @@
     context {
       let n = jnu-sec.get().first()
       block(above: 1.3em, below: 0.7em, sticky: true, breakable: false)[
-        #set text(font: jnu-font-song, size: h1-size, weight: "bold")
+        #set text(size: h1-size, weight: "bold")
         #jnu-cn(n)、#it.body
       ]
     }
@@ -229,7 +244,7 @@
     context {
       let n = jnu-sub.get().first()
       block(above: 1.0em, below: 0.5em, sticky: true, breakable: false)[
-        #set text(font: jnu-font-song, size: h2-size, weight: "bold")
+        #set text(size: h2-size, weight: "bold")
         （#jnu-cn(n)）#it.body
       ]
     }
@@ -238,7 +253,7 @@
   show heading.where(level: 3): it => block(
     above: 0.8em, below: 0.4em, sticky: true, breakable: false,
   )[
-    #set text(font: jnu-font-song, size: h3-size, weight: "bold")
+    #set text(size: h3-size, weight: "bold")
     #it.body
   ]
 
