@@ -1,8 +1,8 @@
-[English](./README.md) | [简体中文](./README-zh.md) |
+[English](./README-en.md) | **简体中文** |
 
-# JiNan University lab typst template
+# 暨南大学实验报告 Typst 模板
 
-## Quick Start
+## 快速开始
 
 ```typst
 #import "lib.typ": jnu-report
@@ -19,44 +19,44 @@
 
 ```
 
-Compile:
+编译：
 
 ```sh
 typst compile main.typ
 ```
 
-## Parameters
+## 参数
 
-| Parameter | Meaning |
+| 参数 | 含义 |
 | --- | --- |
-| `course` | Course name |
-| `grade` | Grade |
-| `lab-name` | Experiment name |
-| `instructor` | Instructor |
-| `lab-id` | Experiment number |
-| `lab-type` | Experiment type |
-| `site` | Location |
-| `author` | Student name |
-| `student-id` | Student ID |
-| `college` | College |
-| `department` | Department |
-| `major` | Major |
+| `course` | 课程名称 |
+| `grade` | 成绩评定 |
+| `lab-name` | 实验项目名称 |
+| `instructor` | 指导教师 |
+| `lab-id` | 实验项目编号 |
+| `lab-type` | 实验项目类型 |
+| `site` | 实验地点 |
+| `author` | 学生姓名 |
+| `student-id` | 学号 |
+| `college` | 学院 |
+| `department` | 系 |
+| `major` | 专业 |
 
-The experiment-time row is structured as `__年__月__日__午 ～ __月__日__午 温度__℃ 湿度__`.
+表单结构为 `__年__月__日__午 ～ __月__日__午 温度__℃ 湿度__`。
 
-| Parameter | Meaning |
+| 参数 | 含义 |
 | --- | --- |
-| `year` / `month` / `day` / `ampm` | Start year / month / day / half-day (use `上` for morning, `下` for afternoon) |
-| `end-month` / `end-day` / `end-ampm` | End month / day / half-day |
-| `temperature` | Temperature (the `℃` unit is pre-printed on the form) |
-| `humidity` | Humidity |
+| `year` / `month` / `day` / `ampm` | 起始 年 / 月 / 日 / 午 |
+| `end-month` / `end-day` / `end-ampm` | 结束 月 / 日 / 午 |
+| `temperature` | 温度（单位 ℃） |
+| `humidity` | 湿度 |
 
-## Additional Configuration
+## 额外配置
 
-| Parameter | Default | Meaning |
+| 参数 | 默认值 | 含义 |
 | --- | --- | --- |
-| `title` | `"暨南大学本科实验报告专用纸"` | Cover title |
-| `appendix-title` | `"暨南大学本科实验报告专用纸"` | Appendix letterhead main title |
-| `appendix-suffix` | `"(附页)"` | Letterhead suffix |
-| `show-appendix-header` | `true` | Show the appendix letterhead |
-| `show-header-rule` | `true` | Draw the rule under the letterhead title |
+| `title` | `"暨南大学本科实验报告专用纸"` | 封面标题 |
+| `appendix-title` | `"暨南大学本科实验报告专用纸"` | 附页报头主标题 |
+| `appendix-suffix` | `"(附页)"` | 报头后缀 |
+| `show-appendix-header` | `true` | 是否显示附页报头 |
+| `show-header-rule` | `true` | 报头标题下是否画横线 |
