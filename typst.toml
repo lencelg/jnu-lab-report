@@ -1,5 +1,5 @@
 [package]
-name = "jnu-lab-report"
+name = "modern-jnu-lab-report"
 version = "0.1.0"
 entrypoint = "lib.typ"
 authors = ["LENCELG <https://github.com/lencelg>"]
