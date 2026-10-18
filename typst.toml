@@ -1,0 +1,17 @@
+[package]
+name = "jnu-lab-report"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["LENCELG <https://github.com/lencelg>"]
+license = "MIT"
+description = "Jinan University undergraduate lab report."
+repository = "https://github.com/lencelg/jnu-lab-report"
+keywords = ["jinan", "jnu", "lab report", "实验报告", "university"]
+categories = ["report"]
+compiler = "0.15.0"
+exclude = ["/main.pdf", "/res/", "/jnu-report.doc", "/jnu-report.pdf", "/.opencode/"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png"
