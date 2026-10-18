@@ -6,10 +6,10 @@ authors = ["LENCELG <https://github.com/lencelg>"]
 license = "MIT"
 description = "Jinan University undergraduate lab report."
 repository = "https://github.com/lencelg/modern-jnu-lab-report"
-keywords = ["jinan", "jnu", "lab report", "实验报告", "university"]
+keywords = ["Jinan University", "jnu", "report"]
 categories = ["report"]
 compiler = "0.15.0"
-exclude = ["/main.pdf", "/res/", "/jnu-report.doc", "/jnu-report.pdf", "/.opencode/"]
+exclude = ["/main.pdf", "/res/", "/jnu-report.doc", "/jnu-report.pdf"]
 
 [template]
 path = "template"
